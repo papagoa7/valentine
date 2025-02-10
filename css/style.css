@@ -89,34 +89,112 @@ body {
 }
 
 .lantern {
-    position: relative;
-    width: 60vw;
-    max-width: 250px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50vmin;
+    width: 32vmin;
+    z-index: 10;
     animation: floatLantern 3s ease-in-out infinite alternate;
 }
 
-@keyframes floatLantern {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0); }
+.lantern::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(#e7984a, #fad14f);
+    animation: flicker 750ms ease-in infinite alternate;
+    z-index: 10;
 }
 
-@media (max-width: 600px) {
-    .square {
-        width: 95vw;
-        padding: 15px;
-    }
+.lantern .bottom {
+    position: absolute;
+    bottom: -3vmin;
+    background: #f0ac4a;
+    z-index: 11;
+    height: 6vmin;
+    width: 100%;
+    border-radius: 50%;
+}
 
-    #question {
-        font-size: 6vw;
-    }
+.lantern .body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
 
-    .yesButton, .noButton, .getButton {
-        width: 90vw;
-    }
+.lantern .body::before {
+    content: "";
+    position: absolute;
+    height: 6vmin;
+    width: 100%;
+    top: -3vmin;
+    background: red;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    z-index: 9;
+    animation: flicker-2 750ms ease-in infinite alternate;
+}
 
-    .yesButton a, .noButton a, .getButton a {
-        font-size: 5vw;
-        padding: 12px 20px;
+.lantern .body::after {
+    content: "";
+    background: url("https://diypixiedust.com/wp-content/uploads/2020/02/tangled_lantern_tangledboats_border_round_gold.png")
+    center center no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 1vmin;
+    left: 0;
+    right: 0;
+    bottom: 5vmin;
+    border-radius: 5vmin;
+    z-index: 20;
+}
+
+@keyframes flicker {
+    0% {
+        background: linear-gradient(#e7984a, #fad14f);
+    }
+    10% {
+        background: linear-gradient(#e9a25c, #fbd661);
+    }
+    45% {
+        background: linear-gradient(#e7984a, #fad14f);
+    }
+    75% {
+        background: linear-gradient(#e9a25c, #fbd661);
+    }
+    90% {
+        background: linear-gradient(#e7984a, #fad14f);
+    }
+    100% {
+        background: linear-gradient(#e9a25c, #fbd661);
+    }
+}
+
+@keyframes flicker-2 {
+    0% {
+        background: #e7984a;
+    }
+    10% {
+        background: #e9a25c;
+    }
+    45% {
+        background: #e7984a;
+    }
+    75% {
+        background: #e9a25c;
+    }
+    90% {
+        background: #e7984a;
+    }
+    100% {
+        background: #e9a25c;
     }
 }
