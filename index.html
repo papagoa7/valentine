@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/img/icon.png">
+
+    <title>02.14</title>
+</head>
+<body>
+    <div class="square">
+        <p id="question">Will you be my Valentine?</p>
+    </div>
+    <div class="buttons">
+        <div class="yesButton" id="yesButton">
+            <a href="#" onclick="changeTexty(event)"><p id="texty">Yes</p></a>
+        </div>
+        <div class="noButton" id="noButton">
+            <a href="#" onclick="changeTextn(event)"><p id="textn">No</p></a>
+        </div>
+    </div>
+    <p id="message"></p>
+    <div class="buttons">
+        <div class="getButton" id="getButton">
+            <a href="#">Get</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="lantern" id="lantern">
+          <div class="body">
+            <div class="img"></div>
+          </div>
+          <div class="bottom"></div>
+        </div>
+      </div>
+    <audio id="giftSound" src="/aud/iseethelight.mp3"></audio>
+</body>
+
+<script>
+    function changeTexty(event) {
+        event.preventDefault();
+        let textElement = document.getElementById("texty");
+        let buttonElement = document.getElementById("yesButton");
+        let messageElement = document.getElementById("message");
+        let getButton = document.getElementById("getButton");
+
+        let texts = ["Yes", "WHALE", "EH EH EH"];
+        let currentIndex = texts.indexOf(textElement.innerText);
+
+        if (currentIndex < texts.length - 1) {
+            textElement.innerText = texts[currentIndex + 1];
+        } else {
+            buttonElement.remove();
+            messageElement.innerText = "Incoming gift!";
+            getButton.style.display = "block";
+        }
+    }
+
+    function changeTextn(event) {
+        event.preventDefault();
+        let textElement = document.getElementById("textn");
+        let buttonElement = document.getElementById("noButton");
+
+        let texts = ["No", "...", "Andwae"];
+        let currentIndex = texts.indexOf(textElement.innerText);
+
+        if (currentIndex < texts.length - 1) {
+            textElement.innerText = texts[currentIndex + 1];
+        } else {
+            buttonElement.remove();
+        }
+    }
+
+    document.getElementById("getButton").addEventListener("click", function (event) {
+        event.preventDefault();
+
+        let sound = document.getElementById("giftSound");
+        sound.play();
+        sound.volume = 0.2;
+
+        let lanternContainer = document.querySelector(".container");
+        let yesButton = document.getElementById("yesButton");
+        let noButton = document.getElementById("noButton");
+        let square = document.querySelector(".square");
+        let getButton = document.getElementById("getButton");
+        let message = document.getElementById("message");
+
+        lanternContainer.style.display = "flex";
+        setTimeout(() => {
+            lanternContainer.style.opacity = "1";
+            lanternContainer.style.pointerEvents = "auto";
+        }, 100);
+
+        if (yesButton) yesButton.style.display = "none";
+        if (noButton) noButton.style.display = "none";
+        if (square) square.style.display = "none";
+        if (getButton) getButton.style.display = "none";
+        if (message) message.style.display = "none";
+
+        document.body.style.background = "url('/img/tangled.png') no-repeat center center fixed";
+        document.body.style.backgroundSize = "cover";
+    });
+
+    document.querySelector(".container").addEventListener("click", function () {
+        location.reload();
+    });
+
+</script>
+</html>
