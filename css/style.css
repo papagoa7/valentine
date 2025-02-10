@@ -7,72 +7,68 @@ body {
     margin: 0;
     background: linear-gradient(90deg, rgba(255,221,132,1) 0%, rgba(255,151,182,1) 100%);
     text-align: center;
-    padding: 20px;
+    padding: 10px;
 }
 
-/* Responsive square */
 .square {
     position: relative;
-    width: 90%;
-    max-width: 400px; /* Limits max size on larger screens */
-    margin-bottom: 50px;
-    background-color: white;
+    width: 90vw;
+    max-width: 1000px;
+    margin-bottom: 5vh;
+    background-color: rgb(255, 255, 255);
     border-radius: 20px;
     border: 10px ridge pink;
     padding: 20px;
 }
 
-/* Responsive text */
 #question {
     color: black;
     font-family: Helvetica, sans-serif;
     font-weight: bold;
-    font-size: 24px; /* Scales better on mobile */
-    text-align: center;
-    padding: 10px;
+    font-size: 5vw;
+    max-font-size: 36px;
+    padding: 15px;
 }
 
 .buttons {
-    display: flex;
-    flex-wrap: wrap; /* Makes buttons wrap on smaller screens */
-    justify-content: center;
-    gap: 10px;
+    text-align: center;
 }
 
-/* Common button styles */
 .yesButton, .noButton, .getButton {
     position: relative;
     display: inline-block;
-    width: 100%;
-    max-width: 200px; /* Prevents excessive width on mobile */
+    margin: 10px;
+    width: 80vw;
+    max-width: 250px;
 }
 
 .yesButton a, .noButton a, .getButton a {
-    display: block;
-    padding: 15px 20px;
-    font-size: 24px; /* Slightly smaller for mobile */
-    text-align: center;
-    text-decoration: none;
     color: white;
     font-family: Helvetica, sans-serif;
     font-weight: bold;
+    font-size: 4vw;
+    max-font-size: 36px;
+    text-align: center;
+    text-decoration: none;
     background-color: #ff2b2b;
+    display: block;
+    position: relative;
+    padding: 15px 30px;
     border-radius: 5px;
-    box-shadow: inset 0 1px 0 #ffc4c4, 0 5px 0 #910000;
+    text-shadow: 0px 1px 0px #000;
+    box-shadow: inset 0 1px 0 #ffc4c4, 0 10px 0 #910000;
 }
 
-/* Active button effect */
 .yesButton a:active, .noButton a:active, .getButton a:active {
     top: 5px;
+    background-color: #ff2b2b;
     box-shadow: inset 0 1px 0 #ffc4c4, inset 0 -3px 0 #910000;
 }
 
-/* Hides Get button initially */
 #getButton {
     display: none;
 }
 
-/* Responsive message */
 #message {
     font-family: Helvetica, sans-serif;
     font-weight: bold;
@@ -80,7 +76,6 @@ body {
     margin-top: 30px;
 }
 
-/* LANTERN STYLES */
 .container {
     display: none;
     position: fixed;
@@ -95,31 +90,33 @@ body {
 
 .lantern {
     position: relative;
-    width: 60vw; /* Adapts to screen size */
+    width: 60vw;
     max-width: 250px;
     animation: floatLantern 3s ease-in-out infinite alternate;
 }
 
-/* Floating animation */
 @keyframes floatLantern {
     0% { transform: translateY(0); }
     50% { transform: translateY(-15px); }
     100% { transform: translateY(0); }
 }
 
-/* Background change for full responsiveness */
 @media (max-width: 600px) {
-    body {
-        background-size: cover;
-    }
     .square {
-        max-width: 350px;
+        width: 95vw;
+        padding: 15px;
     }
+
     #question {
-        font-size: 20px;
+        font-size: 6vw;
     }
+
+    .yesButton, .noButton, .getButton {
+        width: 90vw;
+    }
+
     .yesButton a, .noButton a, .getButton a {
-        font-size: 20px;
-        padding: 12px;
+        font-size: 5vw;
+        padding: 12px 20px;
     }
 }
